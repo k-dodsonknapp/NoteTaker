@@ -1,0 +1,21 @@
+*{
+    /* background-color: red; */
+}
+
+.navlinks {
+    display: flex;
+    justify-content: space-around;
+    text-decoration: none;
+}
+
+/* .navlinks:hover {
+    margin: 50px;
+    text-decoration: transparent;
+    color: turquoise;
+} */
+
+.loginsignup > div {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+}
