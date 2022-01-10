@@ -33,11 +33,7 @@ if (process.env.NODE_ENV !== 'production') {
     });
   }
 
-// router.get('/hello/world', function (req, res) {
-//     res.cookie('XSRF-TOKEN', req.csrfToken());
-//     res.send('Hello World!');
-// });
 
-// router.use('/api', apiRouter);
+router.use('/api', apiRouter);
 
 module.exports = router;
