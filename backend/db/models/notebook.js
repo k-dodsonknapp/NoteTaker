@@ -2,13 +2,13 @@
 module.exports = (sequelize, DataTypes) => {
   const Notebook = sequelize.define('Notebook', {
     userId: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {model: "Users"}
     },
     title: {
       allowNull: false,
-      type: Sequelize.STRING(255)
+      type: DataTypes.STRING(255)
     },
   }, {});
   Notebook.associate = function(models) {

@@ -3,19 +3,19 @@ module.exports = (sequelize, DataTypes) => {
   const Note = sequelize.define('Note', {
     userId: {
       allowNull: false,
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       references: {model: "Users"}
     },
     notebookId: {
       allowNull: false,
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       references: {model: "Notebooks"}
     },
     title: {
-      type: Sequelize.STRING(255)
+      type: DataTypes.STRING(255)
     },
     content: {
-      type: Sequelize.TEXT
+      type: DataTypes.TEXT
     },
   }, {});
   Note.associate = function(models) {
