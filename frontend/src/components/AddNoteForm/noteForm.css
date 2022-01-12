@@ -1,0 +1,16 @@
+.note-form {
+    display: flex;
+    justify-content: center;
+}
+
+.note-form > label,
+.note-form > input {
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

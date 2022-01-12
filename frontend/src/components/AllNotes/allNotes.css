@@ -1,0 +1,27 @@
+ul {
+    list-style: none;
+}
+
+.lis {
+    text-decoration: none;
+    color: black;
+}
+
+.li-div {
+margin: 0%;
+padding: 3%;
+border: 1px black solid;
+width: 20%;
+background-color: beige;
+}
+
+.li-div:hover {
+    background-color: aliceblue;
+}
+
+.note-links {
+width: 100%;
+height: 100%;
+padding: 3%;
+
+}

@@ -6,6 +6,9 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import AllNotes from './components/AllNotes'
+import OneNote from "./components/OneNote";
+import AddOneNote from "./components/AddNoteForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +27,15 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/notes">
+            <AllNotes />
+          </Route>
+          <Route exact path="/notes/:noteId">
+            <OneNote />
+          </Route>
+          <Route exact path='/add'>
+            <AddOneNote />
           </Route>
         </Switch>
       )}
