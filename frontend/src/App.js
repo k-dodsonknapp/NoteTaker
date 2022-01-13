@@ -10,6 +10,7 @@ import AllNotes from './components/AllNotes'
 import OneNote from "./components/OneNote";
 import AddOneNote from "./components/AddNoteForm";
 import EditNote from "./components/EditNote";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/">
+            <LandingPage />
+          </Route>
           <Route path="/login">
             <LoginFormPage />
           </Route>

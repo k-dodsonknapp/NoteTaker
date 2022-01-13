@@ -111,7 +111,7 @@ export const deleteNote = (id) => async dispatch => {
     })
     if (res.ok) {
         const note = await res.json();
-        console.log("Thunk Note", note)
+        // console.log("Thunk Note", note)
         await dispatch(deleteANote(note.id))
         return note;
     }
@@ -160,9 +160,9 @@ const noteReducer = (state = intitalState, action) => {
         }
         case DELETE_NOTE: {
             const newState = { ...state };
-            console.log("before newState", newState)
+            // console.log("before newState", newState)
             delete newState[action.id];
-            console.log("after newState", newState);
+            // console.log("after newState", newState);
             return newState;
         }
         case EDIT_NOTE: {

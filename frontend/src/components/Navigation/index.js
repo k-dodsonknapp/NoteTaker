@@ -27,7 +27,7 @@ function Navigation({ isLoaded }) {
 
     return (
             <ul className='navlinks'>
-                <li >
+                <li className='navigation-li'>
                     <NavLink exact to="/">Home</NavLink>
                     <div className='loginSignup'>
                         {isLoaded && sessionLinks}

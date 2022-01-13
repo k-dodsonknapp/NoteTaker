@@ -1,16 +1,32 @@
-.note-form {
-    display: flex;
-    justify-content: center;
+
+.navigation-li {
+    /* display: none; */
 }
 
-.note-form > label,
-.note-form > input {
-    display: flex;
-    flex-direction: column;
+.left-container,
+.right-container,
+.middle-container {
+    float: left;
+    width: 33%;
+    height: 100%;
 }
 
-.form {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+.left-container,
+.right-container {
+    /* width: 25%; */
 }
+
+.right-container {
+    /* border: 2px solid gray; */
+}
+
+.left-container{
+    /* border: 2px solid orange; */
+}
+
+.middle-container {
+    border: 2px green solid;
+    max-height: fit-content;
+    width: 50%;
+}
+

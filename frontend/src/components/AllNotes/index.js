@@ -3,23 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 
 import { deleteNote, getAllNotes } from "../../store/note";
-import OneNote from "../OneNote";
+// import OneNote from "../OneNote";
 import "./allNotes.css"
 
 
 const AllNotes = () => {
     const dispatch = useDispatch();
-    const notes = useSelector(state => Object.values(state.note))
-    // notes.
-    // console.log("ALL NOTES", notes)
+    const notes = useSelector(state => Object.values(state.note).reverse())
+
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user)
-    console.log("SESSION USER", sessionUser)
-    console.log()
-    // const notteeeesss = [...notes]
-    // console.log("this is notes", notes)
-    // const notesArr = Object.values(notes);
-    // console.log(notesArr)
+
     useEffect(() => {
         dispatch(getAllNotes());
     }, [dispatch]);
@@ -32,10 +26,14 @@ const AllNotes = () => {
 
     return (
         <div>
-            <h2>This is something</h2>
+            <div className="headline-two">
+                <h2>These are your Notes</h2>
+            </div>
             <ul>
                 {notes?.map(note => (
-                            <div key={note.id} className="li-div">
+                    <div key={note.id}>
+                        {sessionUser.id === note.userId &&
+                            <div className="li-div">
                                 <NavLink className="note-links" style={{ color: 'black', textDecoration: "none" }} to={`/notes/${note.id}`}>
                                     <li className="lis">
                                         {note?.title}
@@ -47,7 +45,10 @@ const AllNotes = () => {
                                     </li>
                                 </NavLink>
                             </div>
+                        }
+                    </div>
                 ))}
+
             </ul>
         </div>
     )

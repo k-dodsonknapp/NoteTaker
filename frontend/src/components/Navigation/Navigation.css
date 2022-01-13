@@ -1,24 +1,6 @@
-/* *{
-    /* background-color: red; 
-
-} */
-
-.navlinks {
-    background-color: rgba(198, 255, 255, 0.849);
-    display: inline-flex;
-    /* justify-content: space-around; */
-    /* align-items: ; */
-    text-decoration: none;
-    height: 100%;
-    width: 100%;
-    
+*{
+    font-family:Verdana, Geneva, Tahoma, sans-serif
 }
-
-/* .navlinks:hover {
-    margin: 50px;
-    text-decoration: transparent;
-    color: turquoise;
-} */
 
 .loginsignup > div {
     display: flex;
@@ -26,13 +8,22 @@
     padding: 20px;
 }
 
-/* .navigation-ul {
+.navlinks {
     margin: 0px;
     padding: 0px;
     display: inline;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     text-decoration: none;
+    padding-top: 12px;
+}
+.navbar-div {
+    padding: 0 25px;
+}
+.banner-text {
+    padding-right: 100px;
+    padding-top: 12px;
+    font-family: monospace;
 }
 
 
@@ -40,22 +31,48 @@
     display: flex;
     list-style-type: none;
     align-items: center;
-    justify-content: space-between;
-    background-color: #a3b18a;
+    justify-content: space-around;
+    background-color: #43a0c4;
 
+}
+.navlinkss a {
+    /* text-decoration: none; */
+    list-style-type: none;
+    margin: 15px;
+    list-style: none;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.527);
 }
 
 .navigation-li a {
     text-decoration: none;
     list-style-type: none;
-    display: flex;
-    margin: 50px;
+    margin: 15px;
     list-style: none;
-    font-size: 50px;
-    color: rgb(68, 150, 14);
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.527);
 }
 
-#title {
-    color: #344e41;
-} */
+.profile-btn {
+    /* padding: 2%; */
+    /* border: transparent; */
+    font-size: 15px;
+    text-align: center;
+    margin-right: 5%;
+}
 
+
+.navbar-div {
+    display: flex;
+    text-align: center;
+    font-size: 14px;
+    white-space: nowrap;
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+}
+
+.logout{
+    font-size: 15px;
+    text-align: center;
+    margin-right: 5%;
+}
