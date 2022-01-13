@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import AllNotes from './components/AllNotes'
 import OneNote from "./components/OneNote";
 import AddOneNote from "./components/AddNoteForm";
+import EditNote from "./components/EditNote";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route exact path='/add'>
             <AddOneNote />
+          </Route>
+          <Route exact path='/:noteId/edit'>
+            <EditNote />
           </Route>
         </Switch>
       )}

@@ -27,12 +27,19 @@ const OneNote = () => {
         }
     }
 
+    const handleEdit = async(e) => {
+        e.preventDefault();
+        history.push(`/${noteId}/edit`)
+    }
+
     return (
         <div>
             <h2>{note?.title} <br></br>
                 {note?.id}<br></br>
                 {note?.content}</h2>
             <button id="delete-note-btn" onClick={handleSubmit}>🗑️</button>
+            <button id="delete-note-btn" onClick={handleEdit}>Edit</button>
+
 
         </div>
     )

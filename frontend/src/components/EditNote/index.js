@@ -1,22 +1,27 @@
-// const { useState, useEffect } = require("react");
-import {useState, useEffect} from "react";
-// const { useDispatch, useSelector } = require("react-redux");
-import { useDispatch, useSelector } from "react-redux";
-// const { useHistory } = require("react-router-dom");
-import { useHistory } from "react-router-dom";
-// const { addNote } = require("../../store/note");
-import { addNote } from "../../store/note";
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
+import { editNote } from '../../store/note';
 
-const AddOneNote = () => {
+import './editNote.css'
+
+
+const EditNote = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const session = useSelector(state => state.session)
+    const {noteId} = useParams();
+    const note = useSelector(state => state.note[noteId])
+    // console.log("NOTE ID", note)
+    // console.log("SESSION",  session)
+    // const notes = useSelector(state => Object.values(state.note[noteId]))
 
     const userId = session.user.id
     const notebookId = session.user.id
-
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
+//     notes.map(note => note.title)
+// notes.map(note => note.content)
+    const [title, setTitle] = useState(note.title);
+    const [content, setContent] = useState(note.content);
     // const [note]
     const [errors, setErrors] = useState([])
 
@@ -38,6 +43,7 @@ const AddOneNote = () => {
         e.preventDefault();
 
         const list = {
+            id: noteId,
             title,
             content,
             notebookId,
@@ -47,7 +53,7 @@ const AddOneNote = () => {
         // let newNote;
         // console.log(newNote)
         // try {
-        const newNote = await dispatch(addNote(list));
+        const newNote = await dispatch(editNote(list));
         // console.log("NEW NOTE",newNote)
         // }catch (e) {
         // throw new Error("The note was not made");
@@ -69,7 +75,7 @@ const AddOneNote = () => {
 
     return (
         <div className="form">
-            <h1>New Note</h1>
+            <h1>Edit Note</h1>
             <ul>
                 {errors.map( err => (
                     <li key={err}>
@@ -96,7 +102,8 @@ const AddOneNote = () => {
                         ></textarea>
                     </label>
                     <button type="submit"
-                    onClick={handleSubmit}>Create new </button>
+                    onClick={handleSubmit}
+                    >Edit Note </button>
                     <button type="submit">Cancel</button>
                 </form>
             </div>
@@ -105,4 +112,4 @@ const AddOneNote = () => {
 }
 
 
-export default AddOneNote;
+export default EditNote;

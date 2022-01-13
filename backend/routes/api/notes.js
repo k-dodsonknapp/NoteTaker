@@ -81,18 +81,20 @@ asyncHandler(async(req, res) => {
 // EDIT NOTE
 router.put(
   "/:id",
+  editNotesValidations,
   asyncHandler(async function (req, res) {
     const id = req.params.id;
     const note = await Note.findByPk(id);
     if (note !== null) {
-      const { title, content } = req.body;
-      const newNote = {
-        id,
+      const { title, content, notebookId, userId } = req.body;
+      const newNote = await note.update( {
         userId,
         notebookId,
         title,
-        content,
-      };
+        content, 
+      });
+      // const updatedNote = Note.findByPk(id);
+      return res.json(newNote)
     } else {
       throw Error("Unable to edit note");
     }

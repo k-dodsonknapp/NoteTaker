@@ -59,23 +59,6 @@ const addANote = list => ({
     list
 })
 
-// add note function
-
-// export const addNote = (list) => async dispatch => {
-//     // console.log(list)
-//     const response = await csrfFetch(`api/notes/new`, {
-//         method: 'POST',
-//         headers: {'Content-Type': 'application/json'},
-//         body: JSON.stringify(list)
-//     })
-//     if(!response.ok) {
-//         let error = await response.json()
-//         return error
-//     }
-//     const lists = await list.json()
-//     await dispatch(addANote(lists));
-//     return lists;
-// }
 export const addNote = (noteList) => async (dispatch) => {
     // console.log(noteList)
     const response = await csrfFetch(`/api/notes`, {
@@ -97,6 +80,23 @@ const editNotes = note => ({
     note
 })
 //edit note function
+export const editNote = (data) => async (dispatch) => {
+    console.log("EDIT NOTE", data)
+    const response = await csrfFetch(`/api/notes/${data.id}`, {
+        method: 'put',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+if (response.ok) {
+        const note = await response.json();
+        dispatch(editNotes(note));
+        return note;
+    }
+};
+
+
 //------------------------------------------------------------------
 // Deletes a note
 const deleteANote = id => ({
@@ -118,7 +118,7 @@ export const deleteNote = (id) => async dispatch => {
 }
 //------------------------------------------------------------------
 
-const intitalState = { list: [] }
+const intitalState = {}
 
 const noteReducer = (state = intitalState, action) => {
     // console.log("INITIAL ACTION", action)
@@ -131,8 +131,6 @@ const noteReducer = (state = intitalState, action) => {
             // console.log("ACTION", action)
             return {
                 ...allNotes,
-                ...state.list,
-                list: action.list
             }
         case GET_NOTE: {
             const newState = {
@@ -157,17 +155,21 @@ const noteReducer = (state = intitalState, action) => {
                 ...state,
                 [action.list.id]: {
                     ...state[action.list.id],
-                    ...action.list,
-                    // [action.list.id]: action.list
                 }
             }
         }
         case DELETE_NOTE: {
-            const newState = { ...state, list:[...state.list] };
+            const newState = { ...state };
             console.log("before newState", newState)
             delete newState[action.id];
             console.log("after newState", newState);
             return newState;
+        }
+        case EDIT_NOTE: {
+            return {
+                ...state,
+                [action.note.id]: action.note
+            }
         }
         default:
             return state;
