@@ -82,7 +82,7 @@ export const addNote = (noteList) => async (dispatch) => {
         method: 'POST',
         body: JSON.stringify(noteList)
     });
-    
+
     if (response.ok) {
         const note = await response.json();
         dispatch(addANote(note));
@@ -99,9 +99,9 @@ const editNotes = note => ({
 //edit note function
 //------------------------------------------------------------------
 // Deletes a note
-const deleteANote = list => ({
+const deleteANote = id => ({
     type: DELETE_NOTE,
-    list
+    id
 })
 // delete note function
 
@@ -109,9 +109,11 @@ export const deleteNote = (id) => async dispatch => {
     const res = await csrfFetch(`/api/notes/${id}`, {
         method: "DELETE",
     })
-    if (res.ok){
+    if (res.ok) {
         const note = await res.json();
-        dispatch(deleteANote(note))
+        console.log("Thunk Note", note)
+        await dispatch(deleteANote(note.id))
+        return note;
     }
 }
 //------------------------------------------------------------------
@@ -155,12 +157,18 @@ const noteReducer = (state = intitalState, action) => {
                 ...state,
                 [action.list.id]: {
                     ...state[action.list.id],
-                    ...action.list  ,
+                    ...action.list,
                     // [action.list.id]: action.list
                 }
             }
         }
-        
+        case DELETE_NOTE: {
+            const newState = { ...state, list:[...state.list] };
+            console.log("before newState", newState)
+            delete newState[action.id];
+            console.log("after newState", newState);
+            return newState;
+        }
         default:
             return state;
     }

@@ -108,6 +108,7 @@ router.delete(
     const note = await Note.findByPk(req.params.id);
     if(!note) throw Error ("Unable to delete not");
     await Note.destroy({ where: {id: note.id} })
+    res.json(note)
   })
 );
 

@@ -10,7 +10,7 @@ const OneNote = () => {
     const history = useHistory();
     const { noteId } = useParams();
     const note = useSelector(state => state.note[noteId])
-    console.log("NOTE", note)
+    // console.log("NOTE component", note)
     // const notteeeesss = [...notes]
     // console.log("this is note", note)
     // const notesArr = Object.values(notes);
@@ -19,10 +19,12 @@ const OneNote = () => {
         dispatch(getOneNote(noteId));
     }, [dispatch, noteId]);
 
-    const handleSubmit = e => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(deleteNote(noteId))
-        history.push('/notes')
+        const dis = await dispatch(deleteNote(noteId))
+        if (dis) {
+            history.push('/notes')
+        }
     }
 
     return (
@@ -30,7 +32,7 @@ const OneNote = () => {
             <h2>{note?.title} <br></br>
                 {note?.id}<br></br>
                 {note?.content}</h2>
-            <button id="delete-note-btn" onClick={handleSubmit}>Delete Note</button>
+            <button id="delete-note-btn" onClick={handleSubmit}>🗑️</button>
 
         </div>
     )

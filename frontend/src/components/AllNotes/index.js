@@ -3,12 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 
 import { deleteNote, getAllNotes } from "../../store/note";
+import OneNote from "../OneNote";
 import "./allNotes.css"
 
 
 const AllNotes = () => {
     const dispatch = useDispatch(); 
-    const notes = useSelector(state => state.note.list)
+    const notes = useSelector(state => Object.values(state.note ))
+    const notesArr = notes.slice(0, notes.length - 1)
+    console.log("notesArr", notesArr)
+    // notes.
+    // console.log("ALL NOTES", notes)
     const history = useHistory();
     // const notteeeesss = [...notes]
     // console.log("this is notes", notes)
@@ -28,20 +33,23 @@ const AllNotes = () => {
         <div>
             <h2>This is something</h2>
             <ul>
-                {notes?.map(note => (
-                    <div className="li-div">
+                {notesArr?.map(note => (
+                    <div key={note.id} className="li-div">
                         <NavLink className="note-links" style={{ color: 'black', textDecoration: "none" }} to={`/notes/${note.id}`}>
-                            <li key={note.id} className="lis">
+                            <li  className="lis">
                                 {note?.title}
                                 <div className="note-content">
                                     {note?.content}
                                 </div>
                             </li>
                         </NavLink>
-                        <button onClick={handleSubmit}>Delete Note</button>
+                        {/* <button onClick={handleSubmit}>Delete Note</button> */}
                     </div>
                 ))}
             </ul>
+            {/* <div display={true}>
+                <OneNote />
+            </div> */}
         </div>
     )
 }
