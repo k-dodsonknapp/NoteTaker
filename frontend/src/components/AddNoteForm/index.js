@@ -1,39 +1,29 @@
-// const { useState, useEffect } = require("react");
 import { useState, useEffect } from "react";
-// const { useDispatch, useSelector } = require("react-redux");
 import { useDispatch, useSelector } from "react-redux";
-// const { useHistory } = require("react-router-dom");
 import { useHistory } from "react-router-dom";
-// const { addNote } = require("../../store/note");
 import { addNote } from "../../store/note";
 import "./noteForm.css"
 
 const AddOneNote = () => {
     const history = useHistory();
     const dispatch = useDispatch();
-    const session = useSelector(state => state.session)
+    const session = useSelector(state => state.session);
 
-    const userId = session.user.id
-    const notebookId = Math.floor(Math.random() * 5)
-    // console.log(notebookId)
+    const userId = session.user.id;
+    const notebookId = 1;
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    // const [note]
-    const [errors, setErrors] = useState([])
+    const [errors, setErrors] = useState([]);
 
     useEffect(() => {
         const err = [];
-        if (title.length < 3) err.push('Name must be longer 3 characters')
-        if (title.length > 45) err.push('Name must be 45 characters or less')
-        // fruits.map(fruit => {
-        //   if (fruit.name === name) err.push('Name already exists.')
-        // })
-        // if (co < 1 || sweetness > 10) err.push(
-        //   "Sweetness must be between 1 and 10"
-        // )
+        if (title.length < 3) err.push('Title must be longer 3 characters');
+        if (title.length > 45) err.push('Title must be 45 characters or less');
+        if (content.length < 3) err.push('Content must be longer 3 characters');
+        if (content.length > 45) err.push('Content must be 45 characters or less');
         setErrors(err)
-    }, [title, content])
+    }, [title, content]);
 
 
     const handleSubmit = async (e) => {
@@ -46,70 +36,61 @@ const AddOneNote = () => {
             userId,
         }
 
-        // let newNote;
-        // console.log(newNote)
-        // try {
         const newNote = await dispatch(addNote(list));
-        // console.log("NEW NOTE",newNote)
-        // }catch (e) {
-        // throw new Error("The note was not made");
-        // }
-        history.push("/notes")
+        history.push("/notes");
     }
 
     const handleCancel = (e) => {
         e.preventDefault();
-        history.push('/notes')
+        history.push('/notes');
     }
 
-
     return (
-        <div>
-            <div className="whole-page">
-
-                <div className="left-container">
-
-                    <h1>New Note</h1>
-
-                </div>
-                <div className="middle-container">
-                    <ul className="unordered-errors">
-                        {errors.map(err => (
-                            <li key={err}>
-                                {err}
-                            </li>
-                        ))}
-
-                    </ul>
-                    <div className="note-form">
-                        <form onSubmit={handleSubmit} >
-                            <label> Note Title:
-                                <input
-                                    type="text"
-                                    placeholder="Note"
-                                    value={title}
-                                    onChange={e => setTitle(e.target.value)}
-                                ></input>
-                            </label>
-                            <label>What is Noteworthy?
-                                <textarea
-                                    className="idk"
-                                    style={{ resize: "none" }}
-                                    type="text"
-                                    placeholder="Your Note"
-                                    value={content}
-                                    onChange={e => setContent(e.target.value)}
-                                ></textarea>
-                            </label>
-                            <button type="submit"
+        <div className="form">
+            <div className="left-container">
+            </div>
+            <div className="middle-container">
+                <h2>Create a New Note</h2>
+                <ul className="errors">
+                    {errors.map(err => (
+                        <li className="errors-li" key={err}>
+                            {err}
+                        </li>
+                    ))}
+                </ul>
+                <div className="notes-form">
+                    <form onSubmit={handleSubmit} >
+                        <div className='title-div'>
+                            <input
+                                className='input-title'
+                                type="text"
+                                placeholder="Note"
+                                value={title}
+                                onChange={e => setTitle(e.target.value)}
+                            ></input>
+                        </div>
+                        <div className='content-div'>
+                            <textarea
+                                className="edit-content"
+                                style={{ resize: "none" }}
+                                type="text"
+                                placeholder="Your Note"
+                                value={content}
+                                onChange={e => setContent(e.target.value)}
+                            ></textarea>
+                        </div>
+                        <div className='button-div'>
+                            <button className='edit-btn' type="submit"
                                 onClick={handleSubmit}>Create new </button>
-                            <button onClick={handleCancel} type="submit">Cancel</button>
-                        </form>
-                    </div>
+                            <button className='cancel-btn' onClick={handleCancel} type="submit">Cancel</button>
+                        </div>
+                    </form>
                 </div>
-                <div className="right-container"></div>
+            </div>
+            <div className='right-container'>
             </div>
         </div>
+
     )
 }
 

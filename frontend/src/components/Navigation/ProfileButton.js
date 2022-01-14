@@ -1,4 +1,3 @@
-// frontend/src/components/Navigation/ProfileButton.js
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from "react-router-dom";
@@ -36,26 +35,30 @@ function ProfileButton({ user }) {
 
   return (
     <>
-    <div className="navbar-div">
-    <div className="banner-text">
-      <h2>Note Takker: A place to take notes</h2>
-    </div>
-          <div className="navLinkss">
-      <Link to='/notes'>All Notes</Link>
-      <Link to='/add'>Add Note</Link>
-          </div>
-      <button className="profile-btn" onClick={openMenu}> Hi {sessionUser.username}!!!
-        <i className="fas fa-user-circle" />
-      </button>
-      {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button className="logout" onClick={logout}>Log Out</button>
-          </li>
-        </ul>
-      )}
+      <div className="navbar-div">
+        <div className="banner-text">
+          <h2>Note Takker: A place to take notes</h2>
+          <p></p>
+        </div>
+        <div className="navLinkss">
+          <Link to='/notes'>All Notes</Link>
+          <Link to='/add'>Add Note</Link>
+        </div>
+        <button id="profile-btn" onClick={openMenu}> Hi {sessionUser.username}!!!
+          <i className="fas-fa-user-circle" />
+        </button>
+
+        {showMenu && (
+          <ul className="profile-dropdown">
+            <div className="some-class">
+              <li>username: {user.username}</li>
+              <li>email: {user.email}</li>
+              <li>
+                <button className="logout" onClick={logout}>Log Out</button>
+              </li>
+            </div>
+          </ul>
+        )}
       </div>
     </>
   );

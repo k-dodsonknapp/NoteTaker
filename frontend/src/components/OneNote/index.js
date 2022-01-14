@@ -10,11 +10,7 @@ const OneNote = () => {
     const history = useHistory();
     const { noteId } = useParams();
     const note = useSelector(state => state.note[noteId])
-    // console.log("NOTE component", note)
-    // const notteeeesss = [...notes]
-    // console.log("this is note", note)
-    // const notesArr = Object.values(notes);
-    // console.log(notesArr)
+
     useEffect(() => {
         dispatch(getOneNote(noteId));
     }, [dispatch, noteId]);
@@ -27,20 +23,28 @@ const OneNote = () => {
         }
     }
 
-    const handleEdit = async(e) => {
+    const handleEdit = async (e) => {
         e.preventDefault();
         history.push(`/${noteId}/edit`)
     }
 
     return (
-        <div>
-            <h2>{note?.title} <br></br>
-                {note?.id}<br></br>
-                {note?.content}</h2>
-            <button id="delete-note-btn" onClick={handleSubmit}>🗑️</button>
-            <button id="delete-note-btn" onClick={handleEdit}>Edit</button>
-
-
+        <div className="page">
+            <div className="another-one">
+                <div className="sticky-note-div">
+                    <div className="h2-div">
+                        <h2>{note?.title} <br></br>
+                            {note?.content}</h2>
+                    </div>
+                    <div className="buttonss">
+                        <div className="delete-trash-can" >
+                            <label htmlFor="delete-note-btn">Delete? </label>
+                            <button id="delete-note-btn" onClick={handleSubmit}>🗑️</button>
+                        </div>
+                        <button id="delete-note-btn" onClick={handleEdit}>Edit</button>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

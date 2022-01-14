@@ -1,0 +1,38 @@
+.the-whole-form-page {
+    background-color: beige;
+    height: 93vh;
+
+}
+
+.labelForm-div {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0;
+}
+
+.labelForm-div label {
+    margin-left: 25px;
+}
+
+.labelForm-div input {
+    margin-right: 25px;
+}
+
+.buttons-div button{
+    border-radius: 6px;
+    border: 1px solid black;
+    padding: 3px 6px;
+}
+
+.buttons-div button:hover {
+    background-color: beige;
+}
+
+.form-div h2 {
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+.form-div li {
+    color: red;
+}

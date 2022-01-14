@@ -1,1 +1,50 @@
+.all-page  {
+    display: flex;
+    justify-content: center;
+    background-color: beige;
+    height: 93vh;
+}
 
+.form-div {
+    background-color: rgb(250, 250, 182);
+    width: 25%;
+    height: 275px;
+    border-radius: 7px;
+    margin-top: 200px;
+}
+
+.buttons-div {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+.label-input-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.usename-div {
+    display: flex;
+    justify-content: space-around;
+    margin: 45px 0;
+}
+
+.password-div {
+    display: flex;
+    justify-content: space-around;
+    margin-left: 15px;
+}
+
+.password-div > input {
+    margin-left: 28px;
+}
+
+.password-div label {
+    margin-left: 35px;
+}
+
+.buttons-div button{
+    margin-right: 35px;
+}

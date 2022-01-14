@@ -4,3 +4,48 @@
     border: transparent;
     padding: .3%;
 }
+
+.another-one {
+    display: flex;
+    justify-content: center;
+}
+
+.sticky-note-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid black;
+    width: 33%;
+    height: 300px;
+    background-color: rgb(250, 250, 182);
+    border-radius: 6px;
+    margin-top: 100px;
+
+}
+
+.h2-div {
+    text-align: center;
+}
+
+.buttonss {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    margin-top: 100px;
+}
+
+#delete-note-btn {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-around;
+}
+
+.delete-trash-can {
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+}
+.delete-trash-can button {
+    padding: 30px;
+}

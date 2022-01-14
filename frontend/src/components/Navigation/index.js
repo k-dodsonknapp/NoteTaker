@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import DemoUser from '../DemoUser';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -21,19 +22,23 @@ function Navigation({ isLoaded }) {
                 <div>
                     <NavLink to="/signup">Sign Up</NavLink>
                 </div>
+                <div>
+                    <DemoUser />
+                </div>
+
             </div>
         );
     }
 
     return (
-            <ul className='navlinks'>
-                <li className='navigation-li'>
-                    <NavLink exact to="/">Home</NavLink>
-                    <div className='loginSignup'>
-                        {isLoaded && sessionLinks}
-                    </div>
-                </li>
-            </ul>
+        <ul className='navlinks'>
+            <li className='navigation-li'>
+                <NavLink exact to="/">Home</NavLink>
+                <div className='loginSignup'>
+                    {isLoaded && sessionLinks}
+                </div>
+            </li>
+        </ul>
     );
 }
 

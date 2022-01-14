@@ -1,25 +1,41 @@
-
-
 .middle-container {
-    border: 2px solid red;
-    height: 80vh;
+    height: 60vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
     width: 50%;
+    background-color: rgb(250, 250, 182);
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+
+}
+
+.errors-li {
+    height: 45px;
+    padding: 0;
+    margin: 0;
+}
+
+.errors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    color: red;
 }
 
 .note-form {
     display: inline;
     flex-direction: column;
     justify-content: center;
-    /* border: 2px solid green; */
-   
 }
-
-/* .navigation-li {
-    display: none;
-} */
 
 .form {
     display: flex;
@@ -27,7 +43,6 @@
 }
 
 .left-container {
-    background-color: rgba(12, 4, 4, 0.486);
     color: white;
     width: 25%;
 }
@@ -51,6 +66,7 @@ form {
     justify-content: center;
     padding: 2%;
 }
+
 .content-div {
     display: flex;
     flex-direction: column;
@@ -60,24 +76,26 @@ form {
     align-items: center;
 }
 
-textarea {
+.input-title {
+    border: none;
+    width: 200px;
+    height: 35px;
+}
+
+.edit-content {
     resize: none;
-border: none;
+    border: none;
     list-style: solid;
     overflow-y: hidden;
     background-color: rgb(250, 250, 250);
+    height: 100px;
+    width: 200px;
     
-}
-
-.title-div input,
-.content-div textarea {
-    /* border: 1px solid rgba(0, 0, 0, 0.24); */
-
 }
 
 .button-div {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .edit-btn {

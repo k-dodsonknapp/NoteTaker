@@ -1,3 +1,12 @@
+
+.page {
+    background-image: url(https://st2.depositphotos.com/1542745/6845/i/950/depositphotos_68453397-stock-photo-cork-board-background.jpg);
+    height: 150vh;
+    margin: 50px;
+    background-position: center;
+    background-size: cover;
+}
+
 ul {
     list-style: none;
 }
@@ -8,25 +17,43 @@ ul {
 }
 
 .li-div {
-margin: 0%;
-padding: 3%;
-border: 1px black solid;
-width: 20%;
-background-color: beige;
+    margin: 0%;
+    padding: 3% 1%;
+    border: 1px black solid;
+    width: 90%;
+    background-color: rgb(250, 250, 182);
+    border-radius: 6px;
+    margin: 1.5px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.lis {
+    height: 100px;
 }
 
 .li-div:hover {
-    background-color: aliceblue;
+    background-color: rgb(207, 231, 252);
 }
 
 .note-links {
-width: 100%;
-height: 100%;
-padding: 3%;
+    width: 100%;
+    height: 100%;
+    padding: 7%;
 
 }
 
 .headline-two {
     display: flex;
     justify-content: center;
+    padding: 20px;
+    font-size: 24px;
+}
+
+.note-cards {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    margin-right: .5%;
+    height: 200px;
 }

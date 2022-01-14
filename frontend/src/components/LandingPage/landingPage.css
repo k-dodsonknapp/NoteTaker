@@ -1,7 +1,11 @@
+.image-wrapper{
+    background-color: beige;
+    height: 93vh;    
+}
+
 .all-images {
     display: flex;
     justify-content: center;
-    /* flex-direction: column; */
     align-items: center;
     margin: 5%;
 }
@@ -9,10 +13,25 @@
 .image{
     display: flex;
     justify-content: center;
-    /* max-width: 300px; */
     height: auto;
 }
 img {
     width: 500px;
     border-radius: 25px;
+}
+
+footer a {
+    background-color: beige;
+}
+
+footer {
+    background-color: beige;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+
+.image-wrapper h1 {
+    padding-top: 45px;
+    padding-bottom: 0;
 }
